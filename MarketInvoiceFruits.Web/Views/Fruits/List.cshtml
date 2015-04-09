@@ -1,0 +1,28 @@
+﻿@model List<MarketInvoiceFruits.Logic.Fruit>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List</title>
+</head>
+<body>
+    <div> 
+        <h1>List of fruits</h1>
+        <ul>
+            @foreach (var fruit in Model)
+            {
+                var stateMetadata = MarketInvoiceFruits.Logic.DeliveryStatesMetadataContainer.GetMetadata(fruit.DeliveryState);
+                <li>
+                    @fruit.Name, @fruit.Price, @fruit.Expiry, @stateMetadata.FriendlyName
+                </li>
+            }
+        </ul>
+
+    </div>
+</body>
+</html>
